@@ -43,6 +43,8 @@ export class PipelineStack extends cdk.Stack {
     super(scope, id, props);
 
     const pipeline = new pipelines.CodePipeline(this, "Pipeline", {
+      crossAccountKeys: true,
+      dockerEnabledForSynth: true,
       synth: new CodeBuildStepWithPrimarySource("Synth", {
         input: CodePipelineSourceWithPrimarySource.connection(
           props.source.repoString,
