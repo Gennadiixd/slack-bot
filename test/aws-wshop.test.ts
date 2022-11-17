@@ -1,9 +1,9 @@
 // import * as cdk from 'aws-cdk-lib';
 // import { Template } from 'aws-cdk-lib/assertions';
-// import * as AwsWshop from '../lib/aws wshop-stack';
+// import * as AwsWshop from '../lib/aws-wshop-stack';
 
 // example test. To run these tests, uncomment this file along with the
-// example resource in lib/aws wshop-stack.ts
+// example resource in lib/aws-wshop-stack.ts
 test('SQS Queue Created', () => {
 //   const app = new cdk.App();
 //     // WHEN
