@@ -2,9 +2,6 @@
   "name": "aws-wshop",
   "version": "0.1.0",
   "type": "module",
-  "bin": {
-    "aws-wshop": "bin/aws-wshop.js"
-  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
