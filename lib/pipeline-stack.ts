@@ -59,7 +59,7 @@ export class PipelineStack extends cdk.Stack {
     });
 
     pipeline.addStage(
-      new DeploymentStage(scope, "Staging", {
+      new DeploymentStage(this, "Staging", {
         env: props.accounts.staging,
       })
     );
@@ -70,6 +70,6 @@ class DeploymentStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
     super(scope, id, props);
 
-    new BotStack(scope, "BotStack");
+    new BotStack(this, "BotStack");
   }
 }
