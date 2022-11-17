@@ -10,7 +10,7 @@ if (
   !process.env["STAGING_REGION"]
 ) {
   throw new Error(
-    "Please provide REPO_STRING, BRANCH and CODESTAR_CONNECTION_ARN envs"
+    "Please provide STAGING_REGION, STAGING_ACCOUNT, REPO_STRING, BRANCH and CODESTAR_CONNECTION_ARN envs"
   );
 }
 
