@@ -31,5 +31,5 @@ app.message("goodbye", async ({ message, say }) => {
 
 app.message("hello", async ({ message, say }) => {
   console.log("hello =========================");
-  await say(`hello rcvd`);
+  await say(`hello rcvd 123`);
 });

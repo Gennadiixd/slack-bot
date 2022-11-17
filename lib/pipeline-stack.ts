@@ -1,6 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import * as pipelines from "aws-cdk-lib/pipelines";
 import type { Construct } from "constructs";
+import { BotStack } from "./bot-stack.js";
 
 class CodeBuildStepWithPrimarySource extends pipelines.CodeBuildStep {
   override get primaryOutput(): pipelines.FileSet {
@@ -32,13 +33,16 @@ interface PipelineStackProps extends cdk.StackProps {
     branch: string;
     codestarConnectionArn: string;
   };
+  accounts: {
+    staging: Required<cdk.Environment>;
+  };
 }
 
 export class PipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: PipelineStackProps) {
     super(scope, id, props);
 
-    new pipelines.CodePipeline(this, "Pipeline", {
+    const pipeline = new pipelines.CodePipeline(this, "Pipeline", {
       synth: new CodeBuildStepWithPrimarySource("Synth", {
         input: CodePipelineSourceWithPrimarySource.connection(
           props.source.repoString,
@@ -53,5 +57,19 @@ export class PipelineStack extends cdk.Stack {
         ],
       }),
     });
+
+    pipeline.addStage(
+      new DeploymentStage(scope, "Staging", {
+        env: props.accounts.staging,
+      })
+    );
+  }
+}
+
+class DeploymentStage extends cdk.Stage {
+  constructor(scope: Construct, id: string, props?: cdk.StageProps) {
+    super(scope, id, props);
+
+    new BotStack(scope, "BotStack");
   }
 }
