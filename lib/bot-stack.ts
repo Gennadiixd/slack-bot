@@ -7,7 +7,6 @@ import * as secretManager from "aws-cdk-lib/aws-secretsmanager";
 import type { Construct } from "constructs";
 import { URL } from "node:url";
 
-
 export class BotStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
