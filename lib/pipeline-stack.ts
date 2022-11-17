@@ -55,7 +55,7 @@ export class PipelineStack extends cdk.Stack {
         ),
         commands: [
           "npm ci",
-          `REPO_STRING=${props.source.repoString} BRANCH=${props.source.branch} CODESTAR_CONNECTION_ARN=${props.source.codestarConnectionArn} npx cdk synth -a 'npx ts-node --esm --prefer-ts-exts bin/pipeline.ts'`,
+          `STAGING_ACCOUNT=${props.accounts.staging.account} STAGING_REGION=${props.accounts.staging.region} REPO_STRING=${props.source.repoString} BRANCH=${props.source.branch} CODESTAR_CONNECTION_ARN=${props.source.codestarConnectionArn} npx cdk synth -a 'npx ts-node --esm --prefer-ts-exts bin/pipeline.ts'`,
         ],
       }),
     });
