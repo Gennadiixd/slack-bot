@@ -7,9 +7,6 @@ import * as secretManager from "aws-cdk-lib/aws-secretsmanager";
 import type { Construct } from "constructs";
 import { URL } from "node:url";
 
-// bot token      xoxb-4361255406501-4366759230468-NOiHgawNT2OPEYu2u8P53AeA
-// sign secret    18b5fde02f5e5344df187a151799d5f9
-// aws secretsmanager create-secret --name 'slack-bot-creds' --secret-string '{"BotToken": "xoxb-4361255406501-4366759230468-NOiHgawNT2OPEYu2u8P53AeA", "SigningSecret": "18b5fde02f5e5344df187a151799d5f9"}' --profile workshop-sandox-admin
 
 export class BotStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
