@@ -38,7 +38,7 @@ export class PipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: PipelineStackProps) {
     super(scope, id, props);
 
-    const pipeline = new pipelines.CodePipeline(this, "Pipeline", {
+    new pipelines.CodePipeline(this, "Pipeline", {
       synth: new CodeBuildStepWithPrimarySource("Synth", {
         input: CodePipelineSourceWithPrimarySource.connection(
           props.source.repoString,
