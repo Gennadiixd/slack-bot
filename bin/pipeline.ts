@@ -16,6 +16,10 @@ if (
 
 const app = new cdk.App();
 new PipelineStack(app, "PipelineStack", {
+  env: {
+    account: process.env["CDK_DEFAULT_ACCOUNT"]!,
+    region: process.env["CDK_DEFAULT_REGION"]!,
+  },
   source: {
     repoString: process.env["REPO_STRING"],
     branch: process.env["BRANCH"],
